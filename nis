@@ -1,0 +1,25 @@
+sudo apt install nis
+sudo gedit /etc/default/nis
+
+sudo gedit /etc/ypserv.securenets
+
+sudo gedit /var/yp/Makefile
+sudo gedit /etc/hosts
+sudo gedit /etc/hostname
+sudo su
+/usr/lib/yp/ypinit -m
+
+
+sudo service rpcbind restart
+sudo service ypbind restart
+sudo systemctl restart nis
+/usr/lib/yp/ypinit -m
+sudo gedit /etc/yp.conf
+sudo gedit /etc/nsswitch.conf
+sudo gedit /etc/pam.d/common-session
+sudo su
+login name
+
+ypcat passwd
+yppasswd
+

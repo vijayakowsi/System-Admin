@@ -1,0 +1,9 @@
+sudo apt-get update
+add-apt-repository ppa:dreibh/ppa
+sudo apt-get update
+sudo apt-get install wireshark
+
+xhost si:localuser:root
+sudo wireshark
+
+

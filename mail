@@ -1,0 +1,21 @@
+cd /tmp
+
+wget http://downloads.sourceforge.net/project/squirrelmail/stable/1.4.22/squirrelmail-webmail-1.4.22.zip
+
+sudo apt-get install unzip
+
+sudo unzip squirrelmail-webmail-1.4.22.zip
+
+sudo mv squirrelmail-webmail-1.4.22/ /var/www/html/mail
+sudo chown -R www-data:www-data /var/www/html/mail
+sudo nano /var/www/html/mail/config/config.php
+
+    $domain = 'yourwebsite.com';
+    $data_dir = '/var/www/html/mail/data/';
+    $attachment_dir = '/var/www/html/mail/attach/';
+
+sudo /var/www/html/mail/attach/
+
+sudo chown -R www-data:www-data /var/www/html/mail
+
+

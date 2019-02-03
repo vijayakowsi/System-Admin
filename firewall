@@ -1,0 +1,36 @@
+sudo ufw status
+sudo apt-get install gufw
+
+sudo ufw default allow outgoing
+sudo ufw allow 22/tcp
+sudo ufw allow ssh
+cat /etc/services | less
+sudo ufw enable
+sudo ufw status
+sudo  ufw allow from 127.0.0.1
+sudo ufw allow from 127.0.0.1 to any port 22
+sudo ufw status numbered
+sudo ufw show added
+
+
+
+
+
+ping 127.0.0.1
+sudo su
+iptables -I INPUT -p icmp --icmp-type 0 -j DROP
+iptables -I INPUT -p icmp --icmp-type 3 -j DROP
+
+iptables -I INPUT -p icmp --icmp-type 8 -j DROP
+iptables -L
+iptables -I INPUT -p icmp --icmp-type 8 -j REJECT
+iptables -I INPUT -p icmp --icmp-type 8 -j ACCEPT
+
+iptables -D INPUT 2
+iptables -A INPUT -d 127.0.0.1 -p tcp --dport www -m state --state NEW,ESTABLISHED -j ACCEPT
+iptables -L
+
+
+
+
+

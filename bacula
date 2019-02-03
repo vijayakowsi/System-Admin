@@ -1,0 +1,39 @@
+sudo -i
+apt-get update && apt-get upgrade
+apt-get install mysql-server
+apt-get install bacula-server bacula-client
+mkdir -p /b_backup/backup /b_backup/restore
+chown -R bacula:bacula /b_backup/
+chmod -R 700 /b_backup/
+gedit /etc/bacula/bacula-dir.conf
+gedit /etc/bacula/bacula-sd.conf
+
+bacula-dir -tc /etc/bacula/bacula-dir.conf
+bacula-sd -tc /etc/bacula/bacula-sd.conf
+ systemctl restart bacula-director
+systemctl restart bacula-fd
+systemctl restart bacula-sd
+
+
+bconsole
+*label
+1
+ Filechgr1
+MyVolume
+0
+2
+run
+1
+yes
+message
+status director
+restore all
+5
+done
+yes
+message
+status directory
+exit
+ls -la /b_backup/restore
+
+

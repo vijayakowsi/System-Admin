@@ -1,0 +1,22 @@
+sudo apt install nfs-kernel-server
+sudo mkdir /var/nfs/general -p
+ls -la /var/nfs/general 
+sudo chown nobody:nogroup /var/nfs/general
+sudo nano /etc/exports
+sudo gedit /etc/exports
+/var/nfs/general 127.0.0.1(rw,sync,no_subtree_check)
+/home  127.0.0.1(rw,sync,no_root_squash,no_subtree_check)
+sudo systemctl restart nfs-kernel-server
+
+sudo ufw enable
+sudo ufw status
+sudo ufw allow from 127.0.0.1 to any port nfs
+sudo ufw status
+
+sudo apt install nfs-common
+sudo mkdir -p /etc/general
+sudo mkdir -p /etc/home
+
+sudo mount 127.0.0.1:/var/nfs/general /etc/general
+sudo mount 127.0.0.1:/home /etc/home
+df -h
